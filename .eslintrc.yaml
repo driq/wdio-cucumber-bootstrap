@@ -23,6 +23,7 @@ rules:
       exports: 'never'
       functions: 'ignore'
   global-require: 'off'
+  class-methods-use-this: 'off'
   import/no-extraneous-dependencies: 0
   indent:
     - 'error'
@@ -35,12 +36,12 @@ rules:
         - 'Given'
         - 'When'
         - 'Then'
-  require-jsdoc:
-    - 'error'
-    - require:
-        FunctionDeclaration: true
-        MethodDefinition: true
-        ClassDeclaration: true
+  # require-jsdoc:
+  #   - 'error'
+  #   - require:
+        # FunctionDeclaration: true
+        # MethodDefinition: true
+        # ClassDeclaration: true
   strict: 'off'
   valid-jsdoc:
     - 'error'

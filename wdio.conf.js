@@ -40,13 +40,24 @@ exports.config = {
     // out the Sauce Labs platform configurator - a great tool to configure your
     // capabilities: https://docs.saucelabs.com/reference/platforms-configurator
     //
+    // maxInstances can get overwritten per capability. So if you have an
+    // in-house Selenium grid with only 5 firefox instance available you can
+    // make sure that not more than 5 instance gets started at a time.
     capabilities: [{
-        // maxInstances can get overwritten per capability. So if you have an
-        // in-house Selenium grid with only 5 firefox instance available you can
-        // make sure that not more than 5 instance gets started at a time.
         maxInstances: 1,
-        //
+        browserName: 'firefox',
+    }, {
+        maxInstances: 1,
         browserName: 'chrome',
+    }, {
+        maxInstances: 1,
+        browserName: 'MicrosoftEdge',
+        // }, {
+        //     // To get internet explorer working, check https://github.com/SeleniumHQ/selenium/wiki/InternetExplorerDriver#required-configuration
+        //     // To get acceptable typing speed on 64bit OSes, enable the 'Enable 64 bit processes
+        //     // in Enhanced Protected mode' toggle in Internet Options > Advanced
+        //     maxInstances: 1,
+        //     browserName: 'internet explorer',
     }],
     //
     // ===================
@@ -71,7 +82,7 @@ exports.config = {
     //
     // Set a base URL in order to shorten url command calls. If your url
     // parameter starts with "/", then the base url gets prepended.
-    baseUrl: 'http://localhost:8080',
+    baseUrl: 'http://the-internet.herokuapp.com/',
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,
@@ -152,9 +163,7 @@ exports.config = {
         profile: [],
         // <string[]> (file/dir) require files before executing features
         require: [
-            './src/steps/given.js',
-            './src/steps/then.js',
-            './src/steps/when.js',
+            './src/steps/**/*.js',
         ],
         // <string> specify a custom snippet syntax
         snippetSyntax: undefined,
